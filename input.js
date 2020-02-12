@@ -29,6 +29,12 @@ const handleUserInput = data => {
   } else if (data === "l" || data === "d") {
     connection.write("Move: right");
     console.log("RIGHT");
+  } else if (data === "e") {
+    connection.write("Say: Yeehaaa");
+    console.log("Yeehaaa");
+  } else if (data === "\u0020") {
+    connection.write("Say: spacebar");
+    console.log("spacebar");
   }
 };
 
