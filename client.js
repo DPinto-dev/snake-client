@@ -13,6 +13,15 @@ const connect = function() {
     conn.write("Name: DP");
   });
 
+  //Hardcoded inputs to test server response and snake movement
+  // conn.on("connect", () => {
+  //   setInterval(() => conn.write("Move: up"), 500);
+
+  //   setInterval(() => conn.write("Move: left"), 550);
+  //   setInterval(() => conn.write("Move: down"), 600);
+  //   setInterval(() => conn.write("Move: right"), 650);
+  // });
+
   return conn;
 };
 
