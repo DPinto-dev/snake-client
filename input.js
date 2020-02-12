@@ -1,3 +1,5 @@
+const { playerKEYS } = require("./constants");
+
 // Stores the active TCP connection object.
 let connection;
 /**
@@ -14,28 +16,34 @@ const setupInput = function(conn) {
   return stdin;
 };
 
-const handleUserInput = data => {
-  if (data === "\u0003") {
-    process.exit(0);
-  } else if (data === "k" || data === "w") {
-    connection.write("Move: up");
-    console.log("UP");
-  } else if (data === "j" || data === "s") {
-    connection.write("Move: down");
-    console.log("DOWN");
-  } else if (data === "h" || data === "a") {
-    connection.write("Move: left");
-    console.log("LEFT");
-  } else if (data === "l" || data === "d") {
-    connection.write("Move: right");
-    console.log("RIGHT");
-  } else if (data === "e") {
-    connection.write("Say: Yeehaaa");
-    console.log("Yeehaaa");
-  } else if (data === "\u0020") {
-    connection.write("Say: spacebar");
-    console.log("spacebar");
+const handleUserInput = key => {
+  if (playerKEYS[key]) {
+    connection.write(playerKEYS[key]);
   }
 };
+
+// const handleUserInput = data => {
+//   if (data === "\u0003") {
+//     process.exit(0);
+//   } else if (data === "k" || data === "w") {
+//     connection.write("Move: up");
+//     console.log("UP");
+//   } else if (data === "j" || data === "s") {
+//     connection.write("Move: down");
+//     console.log("DOWN");
+//   } else if (data === "h" || data === "a") {
+//     connection.write("Move: left");
+//     console.log("LEFT");
+//   } else if (data === "l" || data === "d") {
+//     connection.write("Move: right");
+//     console.log("RIGHT");
+//   } else if (data === "e") {
+//     connection.write("Say: Yeehaaa");
+//     console.log("Yeehaaa");
+//   } else if (data === "\u0020") {
+//     connection.write("Say: spacebar");
+//     console.log("spacebar");
+//   }
+// };
 
 module.exports = { setupInput };
